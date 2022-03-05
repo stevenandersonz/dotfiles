@@ -3,9 +3,8 @@
 # Path to your oh-my-zsh installation.
 
 export ZSH="/Users/britneyspears/.oh-my-zsh"
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 ZSH_THEME=robbyrussell
-# I think this adds go to vs
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$(go env GOPATH)/bin"
 plugins=(
     git
     1password
@@ -13,9 +12,8 @@ plugins=(
     )
 
 source $ZSH/oh-my-zsh.sh
-#----------------NODE Version Manager-------------------
-#-------------------------------------------------------------
-
+bindkey -s ^f "tmux-sessionizer.sh\n"
+alias zs="zcrm-search.sh"
 # --------------------- conda initialize ---------------------
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
