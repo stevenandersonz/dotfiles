@@ -24,8 +24,6 @@ set shiftwidth=4
 set hlsearch
 set lazyredraw
 set relativenumber
-set laststatus=2
-set statusline=%F\ %m\ %{fugitive#statusline()}\ %y%=%l,%c\ %P
 set bg=dark
 let mapleader=","
 let g:prettier#autoformat = 1
@@ -46,14 +44,21 @@ let g:ale_set_highlights=0
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_error = "🔥"
-let g:ale_sign_warning = "☢️""
-
-nnoremap <silent> <C-j> :GFiles<CR>
+let g:ale_sign_warning = "☢️""true
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 19
+nnoremap <silent> <C-j> :Files<CR>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer.sh<CR> :redraw!<CR>
+nnoremap <C-e> : Lexplore<CR>
+nnoremap ss :update<cr>
 map <silent> <leader>n :noh <CR>
+map <silent> <leader>t :r !date<CR>
 map <leader>ga :Git add . <CR>
+map <leader>gp :Git push 
+map <leader>gf :Git push 
 map <leader>gs :Git status <CR>
-map <leader>gc :Git commit -m 
+map <leader>gc :Git commit -m "
+map <leader>gl :Git log --all --decorate --oneline --graph
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 syntax on
 imap kj <Esc>
