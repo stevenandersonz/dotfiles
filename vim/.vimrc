@@ -59,6 +59,8 @@ map <leader>gf :Git push
 map <leader>gs :Git status <CR>
 map <leader>gc :Git commit -m "
 map <leader>gl :Git log --all --decorate --oneline --graph
+command Enc :!openssl enc -aes-256-cbc -in % -out %.enc -a
+command -nargs=1 Dec :!openssl enc -d -a -aes-256-cbc -in % -out <q-args> 
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 syntax on
 imap kj <Esc>
