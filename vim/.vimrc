@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
@@ -25,10 +26,15 @@ set hlsearch
 set lazyredraw
 set relativenumber
 set bg=dark
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-k>" : "\<C-h>"
 let mapleader=","
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
-let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_leader_key='<tab>'
 let g:user_emmet_settings = {
             \ 'javascript.jsx' : {
                 \ 'extends' : 'jsx',
@@ -59,8 +65,6 @@ map <leader>gf :Git push
 map <leader>gs :Git status <CR>
 map <leader>gc :Git commit -m "
 map <leader>gl :Git log --all --decorate --oneline --graph
-command Enc :!openssl enc -aes-256-cbc -in % -out %.enc -a
-command -nargs=1 Dec :!openssl enc -d -a -aes-256-cbc -in % -out <q-args> 
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 syntax on
 imap kj <Esc>
