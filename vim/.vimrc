@@ -26,6 +26,7 @@ set hlsearch
 set lazyredraw
 set relativenumber
 set bg=dark
+set pumheight=10
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ CheckBackspace() ? "\<TAB>" :
